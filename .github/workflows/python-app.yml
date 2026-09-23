@@ -33,14 +33,9 @@ jobs:
       run: |
         cd emulator
         python -m PyInstaller -F -i source-content.ico emulator.py --add-data "steam3/protobufs/:steam3/protobufs/" --add-data "files/icons/*.ico;files/icons/" --hidden-import tkinter
-
-    - name: publish the thingymajig
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: softprops/action-gh-release@v2
+    - name: im gonna upload the artifact of a thingymajig
+      uses: actions/upload-artifact@v4
       with:
-        tag_name: v1.0.${{ github.run_number }}
-        name: Release v1.0.${{ github.run_number }}
-        draft: false
-        prerelease: false
-        files: |
-          emulator/dist/emulator.exe
+        name: compiled-windows-emulator
+        path: emulator/dist/emulator.exe
+        if-no-files-found: error
