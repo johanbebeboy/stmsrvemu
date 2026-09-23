@@ -43,4 +43,4 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          emulator/dist/stmsrvemu.exe
+          emulator/dist/emulator.exe
